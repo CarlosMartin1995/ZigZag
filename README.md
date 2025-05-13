@@ -1,11 +1,6 @@
-![build-and-test-python](https://github.com/jbn/ZigZag/actions/workflows/build-and-test-python.yml/badge.svg)
-[![PyPI version](https://badge.fury.io/py/ZigZag.svg)](https://badge.fury.io/py/ZigZag)
-[![GitHub stars](https://img.shields.io/github/stars/jbn/ZigZag)](https://github.com/jbn/ZigZag/stargazers)
-[![GitHub license](https://img.shields.io/github/license/jbn/ZigZag)](https://github.com/jbn/ZigZag/blob/main/LICENSE.txt)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/ZigZag)
-
-
 # ZigZag
+
+Library forked with fixes to run properly with Python 3.10
 
 ZigZag provides functions for identifying the peaks and valleys of a time
 series. Additionally, it provides a function for computing the maximum drawdown.
