@@ -8,7 +8,7 @@ DEF VALLEY = -1
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef int identify_initial_pivot(double [:] X,
+cpdef long identify_initial_pivot(double [:] X,
                                    double up_thresh,
                                    double down_thresh):
     cdef:
@@ -18,8 +18,8 @@ cpdef int identify_initial_pivot(double [:] X,
         double max_x = x_0
         double min_x = x_0
 
-        int max_t = 0
-        int min_t = 0
+        long max_t = 0
+        long min_t = 0
 
     up_thresh += 1
     down_thresh += 1
@@ -100,13 +100,13 @@ cpdef peak_valley_pivots_detailed(double [:] X,
         raise ValueError('The down_thresh must be negative.')
 
     cdef:
-        int initial_pivot = identify_initial_pivot(X,
+        long initial_pivot = identify_initial_pivot(X,
                                                      up_thresh,
                                                      down_thresh)
-        int t_n = len(X)
-        ndarray[int, ndim=1] pivots = np.zeros(t_n, dtype=np.int_)
-        int trend = -initial_pivot
-        int last_pivot_t = 0
+        long t_n = len(X)
+        ndarray[long, ndim=1] pivots = np.zeros(t_n, dtype=np.int_)
+        long trend = -initial_pivot
+        long last_pivot_t = 0
         double last_pivot_x = X[0]
         double x, r
 
@@ -198,7 +198,7 @@ cpdef double max_drawdown_c(ndarray[double, ndim=1] X):
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def pivots_to_modes(int [:] pivots):
+def pivots_to_modes(long [:] pivots):
     """
     Translate pivots into trend modes.
 
@@ -208,10 +208,10 @@ def pivots_to_modes(int [:] pivots):
     """
 
     cdef:
-        int x, t
-        ndarray[int, ndim=1] modes = np.zeros(len(pivots),
+        long x, t
+        ndarray[long, ndim=1] modes = np.zeros(len(pivots),
                                                 dtype=np.int_)
-        int mode = -pivots[0]
+        long mode = -pivots[0]
 
     modes[0] = pivots[0]
 
